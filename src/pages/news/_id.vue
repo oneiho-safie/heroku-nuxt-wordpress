@@ -26,7 +26,9 @@ export default {
       txt: ''
     }
   },
-  created () {},
+  created () {
+    console.log('HOST', process.env.HOST)
+  },
   methods: {}
 }
 </script>

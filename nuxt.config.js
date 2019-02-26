@@ -48,7 +48,7 @@ module.exports = {
   router: {
     base: '/'
   },
-  vendor: ['axios'],
+  // vendor: ['axios'],
 
   /*
   ** Build configuration

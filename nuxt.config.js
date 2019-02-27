@@ -42,15 +42,16 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/axios'
+    // '@nuxtjs/proxy'
   ],
   axios: {
-    timeout: 10000
+    timeout: 10000,
+    rejectUnauthorized: false
   },
-  proxy: {
-    '/wp-json': 'http://52.193.48.36'
-  },
+  // proxy: {
+  //   '/wp-json': 'http://52.193.48.36'
+  // },
   env: {
     // HOST: 'https://www.renowan.com/blog/'
     HOST: 'https://52.193.48.36'

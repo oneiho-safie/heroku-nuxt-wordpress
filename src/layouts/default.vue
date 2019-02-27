@@ -38,6 +38,13 @@
   </div>
 </template>
 
+<script>
+export default {
+  middleware: ['test']
+}
+</script>
+
+
 <style>
 .bd-placeholder-img {
   font-size: 1.125rem;

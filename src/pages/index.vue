@@ -42,11 +42,10 @@ export default {
       example: []
     }
   },
-  asyncData({$axios}) {
+  asyncData({ $axios }) {
     const getPost = (url) => {
-      return $axios.get(url)
+      return $axios.get(process.env.HOST + url)
     }
-    console.log('- - - - - - ')
 
     return new Promise.all([
       getPost('/wp-json/wp/v2/posts?categories=3'),
@@ -56,7 +55,7 @@ export default {
       const example = res[1].data
       return { news, example }
     }).catch(error => {
-      console.log('asyncData error ****')
+      console.log('asyncData error ****', error)
     })
   },
   created() {

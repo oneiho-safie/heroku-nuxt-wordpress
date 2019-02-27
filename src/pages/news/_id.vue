@@ -13,7 +13,7 @@ export default {
   asyncData({ $axios, route }) {
     const id = route.params.id
     const url = '/wp-json/wp/v2/posts/' + id
-    return $axios.get(url).then(res => {
+    return $axios.get(process.env.HOST + url).then(res => {
       return { title: res.data.title.rendered, txt: res.data.content.rendered }
     }).catch(error => {
       console.log('asyncData error', error)

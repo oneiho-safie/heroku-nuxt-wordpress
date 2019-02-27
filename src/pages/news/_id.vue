@@ -15,6 +15,8 @@ export default {
   asyncData({ $axios, route }) {
     const id = route.params.id
     const host = process.server ? process.env.HOST : ''
+    console.log('process.server', process.server)
+    console.log('host', host)
     const url = host + '/wp-json/wp/v2/posts/' + id
     // const url = '/wp-json/wp/v2/posts/' + id
     return $axios.get(url, axiosConfig).then(res => {

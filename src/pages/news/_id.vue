@@ -14,19 +14,14 @@ export default {
   name: 'news-page',
   asyncData({ $axios, route }) {
     const id = route.params.id
-    let host = process.server ? process.env.HOST : ''
-    console.log('process.server', process.server)
-    console.log('host', host)
+    let host = ''
 
     if (!process.server) {
-      const origin = window.location.origin
-      if (origin.indexOf('herokuapp.com') > -1) {
-        host = origin
-      }
+      host = window.location.origin
     }
 
     const url = host + '/wp-json/wp/v2/posts/' + id
-    // const url = '/wp-json/wp/v2/posts/' + id
+
     return $axios.get(url, axiosConfig).then(res => {
       return { title: res.data.title.rendered, txt: res.data.content.rendered }
     }).catch(error => {

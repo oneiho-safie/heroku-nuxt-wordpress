@@ -25,19 +25,14 @@ async function start() {
     await nuxt.ready()
   }
 
-  // app.use('/wp-json', proxy('http://52.193.48.36'))
-
   const targetKey = '/wp-json'
 
   app.use(targetKey, proxy('http://52.193.48.36', {
     proxyReqPathResolver: (req) => {
-      return new Promise(function (resolve, reject) {
-        resolve(req.originalUrl)
-      })
+      return req.originalUrl
     }
   }))
 
-  // app.use('/wp-json', proxy('http://www.renowan.com/blog'))
   // Give nuxt middleware to express
   app.use(nuxt.render)
 

@@ -47,16 +47,13 @@ export default {
   asyncData({ $axios }) {
 
     const getPost = (order) => {
-      let host = process.server ? process.env.HOST : ''
-      const url = host + order
-      // const url = order
+      let host = ''
 
       if (!process.server) {
-        const origin = window.location.origin
-        if (origin.indexOf('herokuapp.com') > -1) {
-          host = origin
-        }
+        host = window.location.origin
       }
+
+      const url = host + order
 
       return $axios.get(url, axiosConfig)
     }

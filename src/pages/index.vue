@@ -51,7 +51,7 @@ export default {
       const url = host + order
       // const url = order
 
-      if (process.server) {
+      if (!process.server) {
         const origin = window.location.origin
         if (origin.indexOf('herokuapp.com') > -1) {
           host = origin

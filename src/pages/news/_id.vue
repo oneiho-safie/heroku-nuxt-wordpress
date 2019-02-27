@@ -17,9 +17,8 @@ export default {
     let host = process.server ? process.env.HOST : ''
     console.log('process.server', process.server)
     console.log('host', host)
-    console.log('domain', window.location.origin)
 
-    if (process.server) {
+    if (!process.server) {
       const origin = window.location.origin
       if (origin.indexOf('herokuapp.com') > -1) {
         host = origin

@@ -33,6 +33,7 @@
 <script>
 import axios from 'axios'
 import { axiosConfig } from '~/utils/axiosConfig.js'
+import { Promise } from 'q'
 
 export default {
   name: 'top',

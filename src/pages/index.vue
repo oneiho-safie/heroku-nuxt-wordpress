@@ -32,7 +32,7 @@
 
 <script>
 import axios from 'axios'
-import { Promise } from 'q';
+import { axiosConfig } from '~/utils/axiosConfig.js'
 
 export default {
   name: 'top',
@@ -43,8 +43,9 @@ export default {
     }
   },
   asyncData({ $axios }) {
-    const getPost = (url) => {
-      return $axios.get(process.env.HOST + url)
+    const getPost = (order) => {
+      const url = process.env.HOST + order
+      return $axios.get(url, axiosConfig)
     }
 
     return new Promise.all([

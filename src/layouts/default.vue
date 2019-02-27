@@ -64,4 +64,9 @@ export default {
 main {
   padding-top: 56px;
 }
+
+footer {
+  border-top: 1px solid #e4e4e4;
+  padding-top: 1rem;
+}
 </style>

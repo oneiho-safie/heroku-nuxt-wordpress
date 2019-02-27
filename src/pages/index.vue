@@ -19,7 +19,10 @@
       </div>
       <div class="col-md-6">
         <h2>導入事例</h2>
-        <p class="my-list" v-for="(item2, index2) in example" :key="index2">{{ item2.title.rendered }}</p>
+        <p class="my-list" v-for="(item2, index2) in example" :key="index2">
+          <nuxt-link :to="'/casestudy/' + item2.id">{{ item2.title.rendered }}</nuxt-link>
+        </p>
+        
       </div>
     </div>
 

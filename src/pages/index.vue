@@ -47,7 +47,7 @@ export default {
   asyncData({ $axios }) {
 
     const getPost = (order) => {
-      const host = process.server ? process.env.HOST : ''
+      let host = process.server ? process.env.HOST : ''
       const url = host + order
       // const url = order
 

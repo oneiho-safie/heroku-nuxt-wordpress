@@ -50,6 +50,14 @@ export default {
       const host = process.server ? process.env.HOST : ''
       const url = host + order
       // const url = order
+
+      if (process.server) {
+        const origin = window.location.origin
+        if (origin.indexOf('herokuapp.com') > -1) {
+          host = origin
+        }
+      }
+
       return $axios.get(url, axiosConfig)
     }
 

@@ -32,9 +32,7 @@ async function start() {
   app.use(targetKey, proxy('http://52.193.48.36', {
     proxyReqPathResolver: (req) => {
       return new Promise(function (resolve, reject) {
-        setTimeout(function () {
-          resolve(req.originalUrl)
-        }, 200)
+        resolve(req.originalUrl)
       })
     }
   }))

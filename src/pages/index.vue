@@ -4,7 +4,7 @@
       <div class="container">
         <h1 class="display-3">Heroku + Firebase + WordPress</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" @click="test">Test &raquo;</a></p>
       </div>
     </div>
 
@@ -45,14 +45,12 @@ export default {
     }
   },
   asyncData({ $axios }) {
-    const instance = axios.create({
-      httpsAgent: new https.Agent({  
-        rejectUnauthorized: false
-      })
-    })
+
     const getPost = (order) => {
-      const url = process.env.HOST + order
-      return instance.get(url, axiosConfig)
+      const host = process.server ? process.env.HOST : ''
+      const url = host + order
+      // const url = order
+      return $axios.get(url, axiosConfig)
     }
 
     return new Promise.all([
@@ -70,6 +68,14 @@ export default {
   },
   components: {
   },
+  methods: {
+    test() {
+      console.log('test')
+      this.$axios.get('/wp-json/wp/v2/posts?categories=3').then(res => {
+        console.log('res', res)
+      })
+    }
+  }
 }
 </script>
 

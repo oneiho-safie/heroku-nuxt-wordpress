@@ -1,6 +1,7 @@
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const proxy = require('express-http-proxy')
 const app = express()
 
 // Import and Set Nuxt.js options
@@ -24,6 +25,21 @@ async function start() {
     await nuxt.ready()
   }
 
+  // app.use('/wp-json', proxy('http://52.193.48.36'))
+
+  const targetKey = '/wp-json'
+
+  app.use(targetKey, proxy('http://52.193.48.36', {
+    proxyReqPathResolver: (req) => {
+      return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+          resolve(req.originalUrl)
+        }, 200)
+      })
+    }
+  }))
+
+  // app.use('/wp-json', proxy('http://www.renowan.com/blog'))
   // Give nuxt middleware to express
   app.use(nuxt.render)
 

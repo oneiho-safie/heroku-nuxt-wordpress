@@ -53,7 +53,7 @@ module.exports = {
   //   '/wp-json': 'http://52.193.48.36'
   // },
   env: {
-    // HOST: 'https://www.renowan.com/blog/'
+    // HOST: 'http://www.renowan.com/blog'
     HOST: 'http://52.193.48.36'
   },
   router: {

@@ -13,15 +13,11 @@ import https from 'https'
 export default {
   name: 'news-page',
   asyncData({ $axios, route }) {
-    const instance = axios.create({
-      httpsAgent: new https.Agent({  
-        rejectUnauthorized: false
-      })
-    })
-
     const id = route.params.id
-    const url = process.env.HOST + '/wp-json/wp/v2/posts/' + id
-    return instance.get(url, axiosConfig).then(res => {
+    const host = process.server ? process.env.HOST : ''
+    const url = host + '/wp-json/wp/v2/posts/' + id
+    // const url = '/wp-json/wp/v2/posts/' + id
+    return $axios.get(url, axiosConfig).then(res => {
       return { title: res.data.title.rendered, txt: res.data.content.rendered }
     }).catch(error => {
       console.log('asyncData error', error)

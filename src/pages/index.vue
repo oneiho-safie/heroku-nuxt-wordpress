@@ -34,6 +34,7 @@
 import axios from 'axios'
 import { axiosConfig } from '~/utils/axiosConfig.js'
 import { Promise } from 'q'
+import https from 'https'
 
 export default {
   name: 'top',
@@ -44,9 +45,14 @@ export default {
     }
   },
   asyncData({ $axios }) {
+    const instance = axios.create({
+      httpsAgent: new https.Agent({  
+        rejectUnauthorized: false
+      })
+    })
     const getPost = (order) => {
       const url = process.env.HOST + order
-      return $axios.get(url, axiosConfig)
+      return instance.get(url, axiosConfig)
     }
 
     return new Promise.all([

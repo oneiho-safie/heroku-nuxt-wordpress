@@ -44,8 +44,8 @@ module.exports = {
   modules: [
   ],
   env: {
-    HOST: 'https://www.renowan.com/blog/'
-    // HOST: 'http://52.193.48.36'
+    // HOST: 'https://www.renowan.com/blog/'
+    HOST: 'https://52.193.48.36'
   },
   router: {
     base: '/'

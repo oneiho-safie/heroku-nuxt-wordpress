@@ -10,11 +10,13 @@ import axios from 'axios'
 
 export default {
   name: 'news-page',
-  asyncData(context) {
-    const id = context.route.params.id
-    const url = process.env.HOST + '/wp-json/wp/v2/posts/' + id
-    return axios.get(url).then(res => {
+  asyncData({ $axios, route }) {
+    const id = route.params.id
+    const url = '/wp-json/wp/v2/posts/' + id
+    return $axios.get(url).then(res => {
       return { title: res.data.title.rendered, txt: res.data.content.rendered }
+    }).catch(error => {
+      console.log('asyncData error', error)
     })
   },
   components: {},
@@ -27,7 +29,6 @@ export default {
     }
   },
   created () {
-    console.log('HOST', process.env.HOST)
   },
   methods: {}
 }

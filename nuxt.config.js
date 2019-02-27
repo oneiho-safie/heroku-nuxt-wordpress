@@ -42,7 +42,15 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
   ],
+  axios: {
+    timeout: 10000
+  },
+  proxy: {
+    '/wp-json': 'https://www.renowan.com/blog/'
+  },
   env: {
     // HOST: 'https://www.renowan.com/blog/'
     HOST: 'https://52.193.48.36'
@@ -50,7 +58,7 @@ module.exports = {
   router: {
     base: '/'
   },
-  // vendor: ['axios'],
+  vendor: ['axios'],
 
   /*
   ** Build configuration

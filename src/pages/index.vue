@@ -32,6 +32,7 @@
 
 <script>
 import axios from 'axios'
+import { Promise } from 'q';
 
 export default {
   name: 'top',
@@ -41,18 +42,21 @@ export default {
       example: []
     }
   },
-  asyncData(context) {
+  asyncData({$axios}) {
     const getPost = (url) => {
-      return axios.get(process.env.HOST + url)
+      return $axios.get(url)
     }
-    
-    return axios.all([
+    console.log('- - - - - - ')
+
+    return new Promise.all([
       getPost('/wp-json/wp/v2/posts?categories=3'),
       getPost('/wp-json/wp/v2/posts?categories=4')
     ]).then(res => {
       const news = res[0].data
       const example = res[1].data
       return { news, example }
+    }).catch(error => {
+      console.log('asyncData error ****')
     })
   },
   created() {

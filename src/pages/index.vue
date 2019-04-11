@@ -93,12 +93,15 @@ export default {
   methods: {
     test() {
       console.log('test')
+    },
+    aa () {
+      console.log('aaaaaa')
     }
   }
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
@@ -114,5 +117,9 @@ export default {
 
 h2 {
   padding-bottom: 1.2rem;
+}
+
+.bar {
+  color: green;
 }
 </style>

@@ -32,7 +32,7 @@
       <nuxt />
     </main>
     <footer class="container">
-      <p>&copy; Company 2017-2019</p>
+      <p>&copy; Company 2017-2019   <span class="foo">foo!!!!</span> </p>
     </footer>
   
   </div>
@@ -45,7 +45,9 @@ export default {
 </script>
 
 
-<style>
+
+<style lang="scss">
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

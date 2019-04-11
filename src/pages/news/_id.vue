@@ -1,5 +1,6 @@
 <template>
   <div class="container" key="news">
+    <box></box>
     <h3>{{ title }}</h3>
     <div v-html="txt"></div>
   </div>
@@ -9,6 +10,7 @@
 import axios from 'axios'
 import { axiosConfig } from '~/utils/axiosConfig.js'
 import https from 'https'
+import Box from '~/components/Box.vue'
 
 export default {
   name: 'news-page',
@@ -28,7 +30,9 @@ export default {
       console.log('asyncData error', error)
     })
   },
-  components: {},
+  components: {
+    Box
+  },
   computed: {},
   watch: {},
   data () {
